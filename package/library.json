@@ -1,0 +1,19 @@
+{
+ "formatVersion": "0.10",
+ "id": "io.github.rick-the-alien.drunk-ash",
+ "version": "0.1.0",
+ "name": "Drunk Ash",
+ "description": "A Hyprune companion: a slightly unsteady fellow in a purple hoodie who follows you through every world, at his own pace.",
+ "license": "CC-BY-4.0",
+ "attribution": [
+  {
+   "path": ".",
+   "author": "Rick",
+   "license": "CC-BY-4.0",
+   "source": "https://github.com/rick-the-alien/hyprune-companion-drunk-ash"
+  }
+ ],
+ "objects": [
+  "drunk-ash"
+ ]
+}

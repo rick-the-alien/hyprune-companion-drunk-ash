@@ -1,0 +1,53 @@
+# SPDX-License-Identifier: MIT
+# Release: on a pushed v* tag, check the package, build the RFC-0015 release assets and publish
+# them as the tag's GitHub Release. Installers fetch these assets, never this repository.
+name: release
+on:
+  push:
+    tags: ['v*']
+permissions:
+  contents: write
+env:
+  # @hyprune/sdk with object format 0.10 and its companion block (IPC 0.24 schema).
+  SDK_VERSION: 0.7.0
+jobs:
+  release:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          lfs: false
+      - name: LFS objects (only when this repository uses LFS)
+        run: |
+          if git lfs ls-files 2>/dev/null | grep -q .; then git lfs pull; fi
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Tools at pinned versions
+        run: |
+          npm install --global "@hyprune/sdk@${SDK_VERSION}"
+          python3 -m pip install --require-hashes --no-deps -r tools/requirements-ci.txt
+      - name: Check the package
+        run: |
+          for o in package/objects/*/; do hyprune object check "$o"; done
+          hyprune library check package
+      - name: Build the release assets
+        run: python3 tools/release.py --tag "${GITHUB_REF_NAME}" --checks '{"objectCheck": "pass", "libraryCheck": "pass"}'
+      - name: Publish the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          version="${GITHUB_REF_NAME#v}"
+          pre=(); [[ "$version" == *-* ]] && pre=(--prerelease)
+          name="$(python3 -c 'import json;print(json.load(open("package/library.json"))["name"])')"
+          gh release create "${GITHUB_REF_NAME}" dist/*.tar.zst dist/*.tar.zst.sha256 dist/*.release.json $(ls dist/*.thumb-*.png 2>/dev/null) \
+            --verify-tag --title "${name} ${version}" --notes-file release/NOTES.md "${pre[@]}"
+      - name: Community registry entry
+        run: |
+          { echo '### Community registry entry'; echo '```json'; cat dist/registry-entry.json; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+          cat dist/registry-entry.json

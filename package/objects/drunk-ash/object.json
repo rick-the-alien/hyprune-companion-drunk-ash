@@ -1,0 +1,69 @@
+{
+ "formatVersion": "0.10",
+ "id": "drunk-ash",
+ "version": "0.1.0",
+ "name": "Drunk Ash",
+ "description": "A slightly unsteady fellow in a purple hoodie who follows you through every world, at his own pace.",
+ "category": "characters",
+ "tags": [
+  "companion",
+  "person"
+ ],
+ "scene": "object.glb",
+ "license": "CC-BY-4.0",
+ "attribution": [
+  {
+   "path": ".",
+   "author": "Rick",
+   "license": "CC-BY-4.0",
+   "source": "https://github.com/rick-the-alien/hyprune-companion-drunk-ash"
+  }
+ ],
+ "bounds": {
+  "min": [
+   -0.8634,
+   -0.0012,
+   -0.193
+  ],
+  "max": [
+   0.8614,
+   1.8971,
+   0.2529
+  ]
+ },
+ "thumbnail": "thumbnail.png",
+ "lighting": {
+  "mode": "probe"
+ },
+ "traits": {
+  "character": {
+   "clips": {
+    "idle": {},
+    "walk": {
+     "speed": 0.782
+    },
+    "run": {
+     "speed": 2.342
+    },
+    "idle_alt1": {},
+    "idle_alt2": {}
+   },
+   "height": 1.9
+  }
+ },
+ "companion": {
+  "name": "Drunk Ash",
+  "followDistance": 2.0,
+  "idles": [
+   "idle_alt1",
+   "idle_alt2"
+  ],
+  "say": [
+   "Is the floor moving, or is it me?",
+   "Lead the way. I'm right behind you. Mostly.",
+   "Nice place you've got here.",
+   "I'm not lost. I'm exploring.",
+   "Wait up, my legs have opinions."
+  ]
+ }
+}

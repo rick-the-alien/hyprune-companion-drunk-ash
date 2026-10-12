@@ -1,0 +1,9 @@
+# Package sources live in plain git here (the whole package is about 2.4 MB). A package with
+# large binaries may keep them in Git LFS instead: uncomment the patterns it needs. Releases
+# never depend on it: installers fetch the release asset, never the repository (RFC-0015).
+# *.glb filter=lfs diff=lfs merge=lfs -text
+# *.bin filter=lfs diff=lfs merge=lfs -text
+# *.ktx2 filter=lfs diff=lfs merge=lfs -text
+# *.png filter=lfs diff=lfs merge=lfs -text
+*.glb binary
+*.png binary
