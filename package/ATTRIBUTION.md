@@ -13,7 +13,8 @@ Modifications from the author's source export, made with the Hyprune worlds tool
 (`tools/npc-import`, `tools/object-import --adopt`): the rest pose lifted to stand on the
 floor (clips unchanged); units, axes and a `root` bone; translation keys kept on the hips with
 the travel removed (in-place clips; speeds kept as `extras.speed`), his own sway kept; clips
-renamed to the Hyprune character names; weights limited to 4; decimated to 8,000 triangles;
+renamed to the Hyprune character names; weights limited to 4; seam vertices welded, then
+decimated to 8,000 triangles;
 textures scaled to 1024 px and compressed (KTX2); geometry quantised and meshopt-compressed.
 `object.json` (with the companion block) and `thumbnail.png` (a render of the character) are
 written by the tooling. The raw export is not part of this repository.
