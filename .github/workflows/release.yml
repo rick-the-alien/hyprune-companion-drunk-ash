@@ -8,8 +8,8 @@ on:
 permissions:
   contents: write
 env:
-  # @hyprune/sdk with object format 0.10 and its companion block (IPC 0.24 schema).
-  SDK_VERSION: 0.7.0
+  # @hyprune/sdk with object format 0.10 and its companion block (IPC 0.25 schema).
+  SDK_VERSION: 0.8.0
 jobs:
   release:
     runs-on: ubuntu-24.04

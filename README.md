@@ -10,7 +10,7 @@ catches up at a run when you get ahead, and has a few things to say when you tal
 | Package id | `io.github.rick-the-alien.drunk-ash` (an object library) |
 | Object | `drunk-ash`: a character with a companion block |
 | Version | 0.1.0 |
-| Needs | Hyprune core with IPC 0.24 and object format 0.10 (companions) |
+| Needs | Hyprune core with IPC 0.25 and object format 0.10 (companions) |
 | Licence | [CC-BY-4.0](LICENSE): credit "Drunk Ash by Rick" ([ATTRIBUTION](package/ATTRIBUTION.md)) |
 | Size | about 2.4 MB: 8,000 triangles, KTX2 textures at 1024 px, meshopt geometry |
 
